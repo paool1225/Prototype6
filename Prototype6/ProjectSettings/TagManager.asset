@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spire
+  - CardHolderLeft
+  - CardHolderRight
   layers:
   - Default
   - TransparentFX

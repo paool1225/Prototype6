@@ -6,12 +6,10 @@ public class Card : MonoBehaviour
 {
     public bool hasBeenPlayed;
     public int cardId;
-    [SerializeField] GameObject deck;
     public Vector3 ogPosition;
 
     private void Start()
     {
-        transform.parent = deck.transform;
         ogPosition = transform.position;
     }
 

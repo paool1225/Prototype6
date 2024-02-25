@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CardHolder : MonoBehaviour
 {
-
     public Card good, bad;
 
     private GameManager gameManager;
     private bool isDragging;
     private Vector3 originalCardHolderPosition;
+    private Collider2D collisionObject;
+
+    private bool triggered = false;
 
     private void Start()
     {
@@ -21,21 +24,24 @@ public class CardHolder : MonoBehaviour
     {
         isDragging = true;
     }
-
     public void OnMouseUp()
     {
         isDragging = false;
         gameObject.transform.position = originalCardHolderPosition; // set card holder back to o.g. position
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-        if (hit.collider != null && hit.collider.CompareTag("Spire"))
+        if (triggered)
         {
-            Debug.Log("Card holder collided with spire");
+            Debug.Log("Card holder collided with: " + collisionObject.tag);
             gameManager.PlayCards(good, bad);
             gameManager.Drawcard();
+            triggered = false;
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        triggered = true;
+        collisionObject = collision;
+    }
     // Update is called once per frame
     void Update()
     {
