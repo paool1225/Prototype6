@@ -329,6 +329,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405332566}
     m_Modifications:
+    - target: {fileID: 2624979069486453182, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: nodeID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619654606594940884, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: spawnerNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5769829723107070293, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
       propertyPath: m_Name
       value: Node4
@@ -838,6 +846,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405332566}
     m_Modifications:
+    - target: {fileID: 2624979069486453182, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: nodeID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619654606594940884, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: spawnerNumber
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5769829723107070293, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
       propertyPath: m_Name
       value: Node7
@@ -1930,6 +1946,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405332566}
     m_Modifications:
+    - target: {fileID: 2624979069486453182, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: nodeID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619654606594940884, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: spawnerNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5769829723107070293, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
       propertyPath: m_Name
       value: Node3
@@ -2126,6 +2150,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405332566}
     m_Modifications:
+    - target: {fileID: 2624979069486453182, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: nodeID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619654606594940884, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: spawnerNumber
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5769829723107070293, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
       propertyPath: m_Name
       value: Node5
@@ -2188,6 +2220,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405332566}
     m_Modifications:
+    - target: {fileID: 2624979069486453182, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: nodeID
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619654606594940884, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: spawnerNumber
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5769829723107070293, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
       propertyPath: m_Name
       value: Node6
@@ -2349,6 +2389,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405332566}
     m_Modifications:
+    - target: {fileID: 2624979069486453182, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: nodeID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619654606594940884, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: spawnerNumber
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5769829723107070293, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
       propertyPath: m_Name
       value: Node8
@@ -2416,6 +2464,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 405332566}
     m_Modifications:
+    - target: {fileID: 2624979069486453182, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: nodeID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619654606594940884, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
+      propertyPath: spawnerNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5769829723107070293, guid: 2a06ceb79c43cd2438b39b061f4271a9, type: 3}
       propertyPath: m_Name
       value: Node2

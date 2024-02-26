@@ -28,10 +28,10 @@ public class CardHolder : MonoBehaviour
     {
         isDragging = false;
         gameObject.transform.position = originalCardHolderPosition; // set card holder back to o.g. position
-        if (triggered)
+        if (triggered && collisionObject.CompareTag("Node"))
         {
             Debug.Log("Card holder collided with: " + collisionObject.tag);
-            gameManager.PlayCards(good, bad);
+            gameManager.PlayCards(good, bad, collisionObject.GetComponent<NodeBehavior>().nodeID); // get node number to pass on which node to perform actions on enemies
             gameManager.Drawcard();
             triggered = false;
         }

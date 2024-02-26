@@ -1,54 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public bool hasBeenPlayed;
     public int cardId;
     public Vector3 ogPosition;
+    private GameManager gameManager;
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         ogPosition = transform.position;
     }
 
-    public void PlayCard() // play the card
+    public void PlayCard(int nodeToUpdate) // play the card
     {
         switch(cardId)
         {
             case 0: // good
-                PlayCardPushBack();
+                PlayCardPushBack(nodeToUpdate);
                 break;
             case 1:
-                PlayCardElectrify();
+                PlayCardElectrify(nodeToUpdate);
                 break;
             case 2:
                 PlayCardElectrifyAll();
                 break;
             case 3:
-                PlayCardFreeze();
+                PlayCardFreeze(nodeToUpdate);
                 break;
             case 4:
-                PlayCardSnip();
+                PlayCardSnip(nodeToUpdate);
                 break;
             case 5: // bad
-                PlayCardIncreaseSpeed();
+                PlayCardIncreaseSpeed(nodeToUpdate);
                 break;
             case 6:
-                PlayCardDoubleDamage();
+                PlayCardDoubleDamage(nodeToUpdate);
                 break;
             case 7:
-                PlayCardAdd5Seconds();
+                PlayCardAdd5Seconds(nodeToUpdate);
                 break;
         }
     }
 
-    public void PlayCardPushBack()
+    public void PlayCardPushBack(int nodeToUpdate)
     {
         Debug.Log("playing card: push back");
+
+        // check for enemies on node where player dropped card
+        List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeToUpdate];
+        Debug.Log("Enemies to push back: " + enemiesOnNode.Count.ToString());
+
+        if (enemiesOnNode.Count > 0)
+        {
+            for(int i = 0; i < enemiesOnNode.Count; i++)
+            {
+                enemiesOnNode[i].PushBack(); // for now, pushes back all enemies on node to starting position
+            }
+        }
     }
-    public void PlayCardElectrify()
+    public void PlayCardElectrify(int nodeToUpdate)
     {
         Debug.Log("playing card: electrify");
 
@@ -59,31 +73,31 @@ public class Card : MonoBehaviour
         Debug.Log("playing card: electrify all");
     }
 
-    public void PlayCardFreeze()
+    public void PlayCardFreeze(int nodeToUpdate)
     {
         Debug.Log("playing card: freeze");
 
     }
 
-    public void PlayCardSnip()
+    public void PlayCardSnip(int nodeToUpdate)
     {
         Debug.Log("playing card: snip");
 
     }
 
-    public void PlayCardIncreaseSpeed()
+    public void PlayCardIncreaseSpeed(int nodeToUpdate)
     {
         Debug.Log("playing card: increase enemy speed");
 
     }
 
-    public void PlayCardDoubleDamage()
+    public void PlayCardDoubleDamage(int nodeToUpdate)
     {
         Debug.Log("playing card: double damage");
 
     }
 
-    public void PlayCardAdd5Seconds()
+    public void PlayCardAdd5Seconds(int nodeToUpdate)
     {
         Debug.Log("playing card: add 5 seconds");
 
