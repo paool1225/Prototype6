@@ -8,10 +8,12 @@ public class Card : MonoBehaviour
     public int cardId;
     public Vector3 ogPosition;
     private GameManager gameManager;
+    private GameTimer gameTimer;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        gameTimer = FindObjectOfType<GameTimer>();
         ogPosition = transform.position;
     }
 
@@ -41,7 +43,7 @@ public class Card : MonoBehaviour
                 PlayCardDoubleDamage(nodeToUpdate);
                 break;
             case 7:
-                PlayCardAdd5Seconds(nodeToUpdate);
+                PlayCardAdd5Seconds();
                 break;
         }
     }
@@ -114,13 +116,14 @@ public class Card : MonoBehaviour
             for (int i = 0; i < enemiesOnNode.Count; i++)
             {
                 enemiesOnNode[i].DoubleDamge(); // increase speed by input factor 
+                Debug.Log("new damage on enemy-" + i.ToString() + enemiesOnNode[i].damage.ToString());
             }
         }
     }
 
-    public void PlayCardAdd5Seconds(int nodeToUpdate)
+    public void PlayCardAdd5Seconds()
     {
         Debug.Log("playing card: add 5 seconds");
-
+        gameTimer.AddTimeToTimer(5f);
     }
 }

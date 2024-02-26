@@ -78,5 +78,7 @@ public class GameManager : MonoBehaviour
     public void AddEnemy(EnemyMovement em) // To add to list of current active enemies
     {
         enemies[em.enemySpawnerParent].Add(em);
+
+        //Debug.Log("enemies on " + em.enemySpawnerParent.ToString() + " - " + enemies[em.enemySpawnerParent].Count.ToString());
     }
 }

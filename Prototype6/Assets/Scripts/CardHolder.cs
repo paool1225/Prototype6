@@ -30,7 +30,7 @@ public class CardHolder : MonoBehaviour
         gameObject.transform.position = originalCardHolderPosition; // set card holder back to o.g. position
         if (triggered && collisionObject.CompareTag("Node"))
         {
-            Debug.Log("Card holder collided with: " + collisionObject.tag);
+            Debug.Log("Card holder collided with: " + collisionObject.name);
             gameManager.PlayCards(good, bad, collisionObject.GetComponent<NodeBehavior>().nodeID); // get node number to pass on which node to perform actions on enemies
             gameManager.Drawcard();
             triggered = false;
@@ -42,6 +42,7 @@ public class CardHolder : MonoBehaviour
         triggered = true;
         collisionObject = collision;
     }
+
     // Update is called once per frame
     void Update()
     {

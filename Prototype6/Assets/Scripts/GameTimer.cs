@@ -32,4 +32,10 @@ public class GameTimer : MonoBehaviour
         int seconds = Mathf.FloorToInt(gameDuration % 60);
         timerText.text = $"Time Remaining: {minutes:00}:{seconds:00}";
     }
+
+    public void AddTimeToTimer(float seconds) // for add x seconds to timer card
+    {
+        gameDuration += seconds;
+        UpdateTimerText();
+    }
 }

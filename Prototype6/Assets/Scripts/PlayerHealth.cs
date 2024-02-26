@@ -7,10 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
     public int health = 10;
     public TextMeshProUGUI healthText; // Reference to TMP text for health
+    private GameManager gameManager;
 
     void Start()
     {
         UpdateHealthText(); // Update health text on game start
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -19,6 +21,11 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= other.gameObject.GetComponent<EnemyMovement>().damage; // get damage factor of enemy
             UpdateHealthText(); // Update health text when taking damage
+
+            // delete enemy
+            Destroy(other.gameObject);
+            gameManager.enemies[other.GetComponent<EnemyMovement>().enemySpawnerParent].Remove(other.GetComponent<EnemyMovement>()); // remove from Game Manager active enemies list
+
 
             if (health <= 0)
             {
