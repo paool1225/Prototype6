@@ -34,4 +34,9 @@ public class EnemyMovement : MonoBehaviour
     {
         transform.position = startingPosition;
     }
+
+    public void IncreaseSpeed(int factorToIncrease)
+    {
+        speed *= factorToIncrease;
+    }
 }

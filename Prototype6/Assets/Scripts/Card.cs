@@ -89,6 +89,17 @@ public class Card : MonoBehaviour
     {
         Debug.Log("playing card: increase enemy speed");
 
+        // check for enemies on node where player dropped card
+        List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeToUpdate];
+        Debug.Log("Enemies to increase speed: " + enemiesOnNode.Count.ToString());
+
+        if (enemiesOnNode.Count > 0)
+        {
+            for (int i = 0; i < enemiesOnNode.Count; i++)
+            {
+                enemiesOnNode[i].IncreaseSpeed(2); // increase speed by input factor 
+            }
+        }
     }
 
     public void PlayCardDoubleDamage(int nodeToUpdate)
