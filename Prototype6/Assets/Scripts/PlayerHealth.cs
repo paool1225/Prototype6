@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            health -= 1;
+            health -= other.gameObject.GetComponent<EnemyMovement>().damage; // get damage factor of enemy
             UpdateHealthText(); // Update health text when taking damage
 
             if (health <= 0)
@@ -29,6 +29,10 @@ public class PlayerHealth : MonoBehaviour
 
     void UpdateHealthText()
     {
+        if(health < 0) // so health doesn't become negative
+        {
+            health = 0;
+        }
         healthText.text = "Health Points: " + health.ToString(); // Update the text to show current health
     }
 

@@ -105,7 +105,17 @@ public class Card : MonoBehaviour
     public void PlayCardDoubleDamage(int nodeToUpdate)
     {
         Debug.Log("playing card: double damage");
+        // check for enemies on node where player dropped card
+        List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeToUpdate];
+        Debug.Log("Enemies to add double damage to: " + enemiesOnNode.Count.ToString());
 
+        if (enemiesOnNode.Count > 0)
+        {
+            for (int i = 0; i < enemiesOnNode.Count; i++)
+            {
+                enemiesOnNode[i].DoubleDamge(); // increase speed by input factor 
+            }
+        }
     }
 
     public void PlayCardAdd5Seconds(int nodeToUpdate)

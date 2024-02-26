@@ -18,7 +18,7 @@ public class SpawnerScript : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         // Set an initial random spawn time to stagger the start times of each spawner
-        nextSpawnTime = Time.time + Random.Range(7f, 15f);
+        nextSpawnTime = Time.time + Random.Range(2f, 30f);
     }
 
     void Update()
@@ -27,7 +27,7 @@ public class SpawnerScript : MonoBehaviour
         {
             SpawnEnemy();
             // After spawning, set the next spawn time to a new random value
-            nextSpawnTime = Time.time + Random.Range(5f, 15f);
+            nextSpawnTime = Time.time + Random.Range(30f, 80f);
         }
     }
 
@@ -36,7 +36,7 @@ public class SpawnerScript : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
 
         EnemyMovement em = enemy.GetComponent<EnemyMovement>();
-        em.enemySpawnerParent = spawnerNumber;
-        gameManager.AddEnemy(em);
+        em.enemySpawnerParent = spawnerNumber; // tell enemy which node it originated from
+        gameManager.AddEnemy(em); // add to list of all active enemies in GameManager
     }
 }

@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 startingPosition;
 
     public int enemySpawnerParent;
+    public int damage = 1;
 
     void Start()
     {
@@ -30,13 +31,18 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void PushBack() // for push back card
+    public void PushBack() // for push back enemy card
     {
         transform.position = startingPosition;
     }
 
-    public void IncreaseSpeed(int factorToIncrease)
+    public void IncreaseSpeed(int factorToIncrease) // for increase enemy speed card
     {
         speed *= factorToIncrease;
+    }
+
+    public void DoubleDamge() // for double damage enemy card
+    {
+        damage *= 2;
     }
 }
