@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +6,6 @@ public class Card : MonoBehaviour
 {
     public int cardId;
     public int cardPowerLevel;
-    public Vector3 ogPosition;
     private GameManager gameManager;
     private GameTimer gameTimer;
 
@@ -16,7 +13,6 @@ public class Card : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         gameTimer = FindObjectOfType<GameTimer>();
-        ogPosition = transform.position;
     }
 
     public void PlayCard(int nodeToUpdate) // play the card
@@ -70,28 +66,28 @@ public class Card : MonoBehaviour
     {
         //Debug.Log("playing card: electrify");
 
-        List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeToUpdate];
-        Debug.Log($"Electrifying {enemiesOnNode.Count} enemies on node {nodeToUpdate}.");
+        List<GameObject> enemiesOnNode = gameManager.enemies[nodeToUpdate];
+        //Debug.Log($"Electrifying {enemiesOnNode.Count} enemies on node {nodeToUpdate + 1}.");
 
         for (int i = enemiesOnNode.Count - 1; i >= 0; i--)
         {
             // Call the new DestroyEnemy method
-            enemiesOnNode[i].DestroyEnemy();
-
-            
+            Destroy(enemiesOnNode[i]); // destroy enemy
+            gameManager.numberOfActiveEnemies--;
         }
+        enemiesOnNode.Clear(); // remove from enemy list on node
     }
 
 
     public void PlayCardElectrifyAll()
     {
-        Debug.Log("playing card: electrify all");
+        //Debug.Log("playing card: electrify all");
 
 
         // Iterate through all nodes
         for (int nodeIndex = 0; nodeIndex < gameManager.enemies.Length; nodeIndex++)
         {
-            List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeIndex];
+            List<GameObject> enemiesOnNode = gameManager.enemies[nodeIndex];
 
             // Iterate backwards through the list to safely remove elements while iterating
             for (int i = enemiesOnNode.Count - 1; i >= 0; i--)
@@ -101,33 +97,35 @@ public class Card : MonoBehaviour
 
                 // Optionally remove the enemy from the list, if you handle this in the OnDestroy method of EnemyMovement, this is not needed
                 enemiesOnNode.RemoveAt(i);
+
+                gameManager.numberOfActiveEnemies--;
             }
         }
 
-        Debug.Log("All enemies have been electrified.");
+        //Debug.Log("All enemies have been electrified.");
 
     }
 
 
     public void PlayCardFreeze(int nodeToUpdate)
     {
-        Debug.Log("Playing card: freeze");
+        //Debug.Log("Playing card: freeze");
 
-        List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeToUpdate];
-        Debug.Log($"Freezing {enemiesOnNode.Count} enemies on node {nodeToUpdate}.");
+        List<GameObject> enemiesOnNode = gameManager.enemies[nodeToUpdate];
+        //Debug.Log($"Freezing {enemiesOnNode.Count} enemies on node {nodeToUpdate + 1}.");
 
         float freezeDuration = 5f; // Example duration, adjust as needed
 
         foreach (var enemy in enemiesOnNode)
         {
-            enemy.Freeze(freezeDuration);
+            enemy.GetComponent<EnemyMovement>().Freeze(freezeDuration);
         }
     }
 
 
     public void PlayCardSnip(int nodeToUpdate)
     {
-        Debug.Log("playing card: snip");
+        //Debug.Log("playing card: snip");
         GameObject node = gameManager.nodes[nodeToUpdate];
         if (node) // if the node is still alive
         {
@@ -147,7 +145,7 @@ public class Card : MonoBehaviour
 
         if (allRemoved)
         {
-            Debug.Log("Won from snipping all nodes");
+            //Debug.Log("Won from snipping all nodes");
             SceneManager.LoadScene("GameWinScene"); // Load the Game Win scene
         }
 
@@ -159,8 +157,7 @@ public class Card : MonoBehaviour
             {
                 DestroyImmediate(enemiesOnNode[i]); // Destroy enemies 
                 gameManager.numberOfActiveEnemies--;
-                Debug.Log(gameManager.numberOfActiveEnemies);
-            }
+             }
         }
         enemiesOnNode.Clear();
 

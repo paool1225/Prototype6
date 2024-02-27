@@ -51,13 +51,6 @@ public class EnemyMovement : MonoBehaviour
     {
         damage *= 2;
     }
-    public void DestroyEnemy()
-    {
-        // Handle any necessary before-death logic here (e.g., playing an animation, updating game state)
-
-        // Finally, remove the enemy from the game
-        Destroy(gameObject);
-    }
     public void Freeze(float duration)
     {
         if (!isFrozen) // Prevent re-freezing if already frozen
