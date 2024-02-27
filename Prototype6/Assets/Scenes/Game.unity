@@ -1479,6 +1479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Good Deck Types
       objectReference: {fileID: 0}
+    - target: {fileID: 1125773235891676783, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: cardPowerLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1157365321365670823, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.213448
@@ -1518,6 +1522,22 @@ PrefabInstance:
     - target: {fileID: 1157365321365670823, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191580877897863695, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: cardPowerLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3512014721315146851, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: cardPowerLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077716503358360292, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: cardPowerLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887115838481298767, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: cardPowerLevel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2067,6 +2087,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1635994657925459509, guid: 22fcb63f487a4df4d86b42fbca8ffb61, type: 3}
+      propertyPath: cardPowerLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4000833402427364248, guid: 22fcb63f487a4df4d86b42fbca8ffb61, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.695278
@@ -2110,6 +2134,14 @@ PrefabInstance:
     - target: {fileID: 4988409507083336137, guid: 22fcb63f487a4df4d86b42fbca8ffb61, type: 3}
       propertyPath: m_Name
       value: Bad Deck Types
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191902360551912896, guid: 22fcb63f487a4df4d86b42fbca8ffb61, type: 3}
+      propertyPath: cardPowerLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020229302956929003, guid: 22fcb63f487a4df4d86b42fbca8ffb61, type: 3}
+      propertyPath: cardPowerLevel
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
