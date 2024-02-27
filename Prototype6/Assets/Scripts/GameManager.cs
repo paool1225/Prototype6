@@ -17,10 +17,15 @@ public class GameManager : MonoBehaviour
     public int numberOfActiveEnemies = 0;
 
     private GameTimer timer;
+    private PlayerHealth playerHealth;
+
+    public int goodDeckSize = 10;
+    public int badDeckSize = 6;
 
     private void Start()
     {
         timer = FindObjectOfType<GameTimer>();
+        playerHealth = FindObjectOfType<PlayerHealth>();
 
         for (int i = 0; i < enemies.Length; i++) // instantiate Lists with array
         {
@@ -32,65 +37,108 @@ public class GameManager : MonoBehaviour
 
     public void Drawcard()
     {
+        if(goodDeckSize <= 4) // reset cards back into unused piles
+        {
+            for(int i = 0; i < deckGood.Count; i++) 
+            {
+                deckGood[i].hasBeenUsed = false;
+            }
+            goodDeckSize = 10;
+        }
+        if(badDeckSize <= 2)
+        {
+            for (int i = 0; i < deckBad.Count; i++)
+            {
+                deckBad[i].hasBeenUsed = false;
+            }
+            badDeckSize = 6;
+        }
+
         int p1, p2;
         Card randGood1, randGood2, randBad1, randBad2;
+        if(playerHealth.health < 4)
+        {
+            // let high cards come in
+        }
+
+        if (numberOfActiveEnemies >= 3)
+        {
+            Debug.Log("HIGH ENEMIES: " + numberOfActiveEnemies);
+            p1 = Random.Range(0, deckGood.Count); // pull random card
+            randGood1 = deckGood[p1];
+
+            while (randGood1.hasBeenUsed)
+            {
+                p1 = Random.Range(0, deckGood.Count); // pull random card
+                randGood1 = deckGood[p1];
+            }
+
+            p2 = Random.Range(0, deckGood.Count); // pull random card
+            randGood2 = deckGood[p2];
+            while (p2 == p1 || randGood2.hasBeenUsed) // while it pulls a higher power level
+            {
+                p2 = Random.Range(0, deckGood.Count);
+                randGood2 = deckGood[p2];
+            }
+        }
         // if timer is < x amt of time, then introduce higher power cards
-        if (timer.gameDuration >= 70f || numberOfActiveEnemies <= 1)
+        else if (timer.gameDuration >= 40f || numberOfActiveEnemies < 3)
         {
             p1 = Random.Range(0, deckGood.Count); // pull random card
-            while (deckGood[p1].cardPowerLevel > 2) // while it pulls a higher power level
+            randGood1 = deckGood[p1];
+            while (deckGood[p1].cardPowerLevel > 2 || randGood1.hasBeenUsed) // while it pulls a higher power level
             {
                 p1 = Random.Range(0, deckGood.Count);
-
+                randGood1 = deckGood[p1];
             }
-            randGood1 = deckGood[p1];
 
             p2 = Random.Range(0, deckGood.Count); // pull random card
-            while (deckGood[p2].cardPowerLevel > 2 || p2 == p1) // while it pulls a higher power level
+            randGood2 = deckGood[p2];
+            while (deckGood[p2].cardPowerLevel > 2 || p2 == p1 || randGood2.hasBeenUsed) // while it pulls a higher power level
             {
                 p2 = Random.Range(0, deckGood.Count);
-
+                randGood2 = deckGood[p2];
             }
-            randGood2 = deckGood[p2];
-        }
-        else if (numberOfActiveEnemies > 1)
-        {
-            p1 = Random.Range(0, deckGood.Count); // pull random card
-            randGood1 = deckGood[p1];
-
-            p2 = Random.Range(0, deckGood.Count); // pull random card
-            while (p2 == p1) // while it pulls a higher power level
-            {
-                p2 = Random.Range(0, deckGood.Count);
-
-            }
-            randGood2 = deckGood[p2];
         }
         else // less than 70 secs left
         {
             p1 = Random.Range(0, deckGood.Count); // pull random card
             randGood1 = deckGood[p1];
 
+            while (randGood1.hasBeenUsed)
+            {
+                p1 = Random.Range(0, deckGood.Count); // pull random card
+                randGood1 = deckGood[p1];
+            }
+
             p2 = Random.Range(0, deckGood.Count); // pull random card
-            while ( p2 == p1) // while it pulls a higher power level
+            randGood2 = deckGood[p2];
+
+            while (p2 == p1 || randGood2.hasBeenUsed) // while they are the exact same card
             {
                 p2 = Random.Range(0, deckGood.Count);
+                randGood2 = deckGood[p2];
 
             }
-            randGood2 = deckGood[p2];
         }
 
 
         p1 = Random.Range(0, deckBad.Count); // pull random card
         randBad1 = deckBad[p1];
+        while (randBad1.hasBeenUsed)
+        {
+            p1 = Random.Range(0, deckBad.Count); // pull random card
+            randBad1 = deckBad[p1];
+        }
 
         p2 = Random.Range(0, deckBad.Count); // pull random card
-        while (p2 == p1) // while it pulls a higher power level
+        randBad2 = deckBad[p2];
+
+        while (p2 == p1 || randBad2.hasBeenUsed) // while they are the exact same card
         {
             p2 = Random.Range(0, deckBad.Count);
-
+            randBad2 = deckBad[p2];
         }
-        randBad2 = deckBad[p2];
 
         // Place cards in right position
         randGood1.transform.position = cardSlots[0].position;
