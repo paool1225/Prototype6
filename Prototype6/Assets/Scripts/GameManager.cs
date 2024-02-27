@@ -1,7 +1,4 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,9 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] CardHolder cardHolderRight;
     [SerializeField] GameObject GoodDeck;
     [SerializeField] GameObject BadDeck;
-
-
-    public List<EnemyMovement>[] enemies = new List<EnemyMovement>[8]; // for 8 nodes
+    
+    [SerializeField] public GameObject[] nodes;
+    public List<GameObject>[] enemies = new List<GameObject>[8]; 
 
     private void Start()
     {
@@ -67,19 +64,18 @@ public class GameManager : MonoBehaviour
         good.PlayCard(nodeToUpdate);
         bad.PlayCard(nodeToUpdate);
 
-        Debug.Log("Clearing old hand...");
+       // Debug.Log("Clearing old hand...");
 
         // Clear drawn cards: set cards as children to decks
+        cardHolderLeft.good.transform.position = cardHolderLeft.good.ogPosition;
         cardHolderLeft.good.transform.position = cardHolderLeft.good.ogPosition;
         cardHolderLeft.bad.transform.position = cardHolderLeft.bad.ogPosition;
         cardHolderRight.good.transform.position = cardHolderRight.good.ogPosition;
         cardHolderRight.bad.transform.position = cardHolderRight.bad.ogPosition;
     }
 
-    public void AddEnemy(EnemyMovement em) // To add to list of current active enemies
+    public void AddEnemy(GameObject enemy)
     {
-        enemies[em.enemySpawnerParent].Add(em);
-
-        //Debug.Log("enemies on " + em.enemySpawnerParent.ToString() + " - " + enemies[em.enemySpawnerParent].Count.ToString());
+        enemies[enemy.GetComponent<EnemyMovement>().enemySpawnerParent].Add(enemy);
     }
 }

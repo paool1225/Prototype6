@@ -24,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
 
             // delete enemy
             Destroy(other.gameObject);
-            gameManager.enemies[other.GetComponent<EnemyMovement>().enemySpawnerParent].Remove(other.GetComponent<EnemyMovement>()); // remove from Game Manager active enemies list
+            gameManager.enemies[other.GetComponent<EnemyMovement>().enemySpawnerParent].Remove(other.gameObject); // remove from Game Manager active enemies list
 
 
             if (health <= 0)
