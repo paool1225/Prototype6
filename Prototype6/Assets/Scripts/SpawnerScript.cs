@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
@@ -37,6 +35,6 @@ public class SpawnerScript : MonoBehaviour
 
         EnemyMovement em = enemy.GetComponent<EnemyMovement>();
         em.enemySpawnerParent = spawnerNumber; // tell enemy which node it originated from
-        gameManager.AddEnemy(em); // add to list of all active enemies in GameManager
+        gameManager.AddEnemy(enemy); // add to list of all active enemies in GameManager
     }
 }
