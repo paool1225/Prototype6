@@ -14,13 +14,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject GoodDeck;
     [SerializeField] GameObject BadDeck;
 
+
     public List<EnemyMovement>[] enemies = new List<EnemyMovement>[8]; // for 8 nodes
 
     private void Start()
     {
-        for(int i = 0; i < enemies.Length; i++) // instantiate Lists with array
+        for (int i = 0; i < enemies.Length; i++) // instantiate Lists with array
         {
-            enemies[i] = new();
+            enemies[i] = new List<EnemyMovement>();
         }
 
         Drawcard();

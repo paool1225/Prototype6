@@ -68,18 +68,60 @@ public class Card : MonoBehaviour
     {
         Debug.Log("playing card: electrify");
 
+        List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeToUpdate];
+        Debug.Log($"Electrifying {enemiesOnNode.Count} enemies on node {nodeToUpdate}.");
+
+        for (int i = enemiesOnNode.Count - 1; i >= 0; i--)
+        {
+            // Call the new DestroyEnemy method
+            enemiesOnNode[i].DestroyEnemy();
+
+            
+        }
     }
+
 
     public void PlayCardElectrifyAll()
     {
         Debug.Log("playing card: electrify all");
+
+
+        // Iterate through all nodes
+        for (int nodeIndex = 0; nodeIndex < gameManager.enemies.Length; nodeIndex++)
+        {
+            List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeIndex];
+
+            // Iterate backwards through the list to safely remove elements while iterating
+            for (int i = enemiesOnNode.Count - 1; i >= 0; i--)
+            {
+                // Assuming Destroy(gameObject) is sufficient for cleanup, otherwise call a specific cleanup method
+                Destroy(enemiesOnNode[i].gameObject);
+
+                // Optionally remove the enemy from the list, if you handle this in the OnDestroy method of EnemyMovement, this is not needed
+                enemiesOnNode.RemoveAt(i);
+            }
+        }
+
+        Debug.Log("All enemies have been electrified.");
+
     }
+
 
     public void PlayCardFreeze(int nodeToUpdate)
     {
-        Debug.Log("playing card: freeze");
+        Debug.Log("Playing card: freeze");
 
+        List<EnemyMovement> enemiesOnNode = gameManager.enemies[nodeToUpdate];
+        Debug.Log($"Freezing {enemiesOnNode.Count} enemies on node {nodeToUpdate}.");
+
+        float freezeDuration = 5f; // Example duration, adjust as needed
+
+        foreach (var enemy in enemiesOnNode)
+        {
+            enemy.Freeze(freezeDuration);
+        }
     }
+
 
     public void PlayCardSnip(int nodeToUpdate)
     {
