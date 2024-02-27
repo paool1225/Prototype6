@@ -11,6 +11,9 @@ public class EnemyMovement : MonoBehaviour
     public int enemySpawnerParent;
     public int damage = 1;
 
+    private bool isFrozen = false;
+    private float freezeDuration = 5f;
+
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Ensure player has the "Player" tag
@@ -19,7 +22,10 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        MoveTowardsPlayer();
+        if (!isFrozen)
+        {
+            MoveTowardsPlayer();
+        }
     }
 
     void MoveTowardsPlayer()
@@ -44,5 +50,29 @@ public class EnemyMovement : MonoBehaviour
     public void DoubleDamge() // for double damage enemy card
     {
         damage *= 2;
+    }
+    public void Freeze(float duration)
+    {
+        if (!isFrozen) // Prevent re-freezing if already frozen
+        {
+            isFrozen = true;
+            freezeDuration = duration;
+            StartCoroutine(FreezeCoroutine());
+        }
+    }
+    private IEnumerator FreezeCoroutine()
+    {
+        // Logic to pause enemy actions
+        // For example, disable enemy's movement
+        yield return new WaitForSeconds(freezeDuration);
+
+        // Logic to resume enemy actions
+        isFrozen = false;
+        // For example, enable enemy's movement
+    }
+
+    private void Unfreeze()
+    {
+        isFrozen = false;
     }
 }

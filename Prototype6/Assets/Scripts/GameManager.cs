@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public List<Card> deckGood = new();
     public List<Card> deckBad = new();
     public Transform[] cardSlots;
+    public Transform[] initialSlots;
     [SerializeField] CardHolder cardHolderLeft;
     [SerializeField] CardHolder cardHolderRight;
     [SerializeField] GameObject GoodDeck;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
         int p1, p2;
         Card randGood1, randGood2, randBad1, randBad2;
         // if timer is < x amt of time, then introduce higher power cards
-        if (timer.gameDuration >= 70f || numberOfActiveEnemies < 4)
+        if (timer.gameDuration >= 70f || numberOfActiveEnemies <= 1)
         {
             p1 = Random.Range(0, deckGood.Count); // pull random card
             while (deckGood[p1].cardPowerLevel > 2) // while it pulls a higher power level
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
             }
             randGood2 = deckGood[p2];
         }
-        else if (numberOfActiveEnemies > 3)
+        else if (numberOfActiveEnemies > 1)
         {
             p1 = Random.Range(0, deckGood.Count); // pull random card
             randGood1 = deckGood[p1];
@@ -78,6 +79,8 @@ public class GameManager : MonoBehaviour
             }
             randGood2 = deckGood[p2];
         }
+
+
         p1 = Random.Range(0, deckBad.Count); // pull random card
         randBad1 = deckBad[p1];
 
@@ -99,6 +102,9 @@ public class GameManager : MonoBehaviour
         // Put cards into card holders
         cardHolderLeft.good = randGood1; cardHolderLeft.bad = randBad1;
         cardHolderRight.good = randGood2; cardHolderRight.bad = randBad2;
+
+        Debug.Log("rg: " + randGood1.name + " rb: " + randBad1.name);
+        Debug.Log("lg: " + randGood2.name + " lb: " + randBad2.name);
     }
 
     public void PlayCards(Card good, Card bad, int nodeToUpdate)
@@ -106,14 +112,13 @@ public class GameManager : MonoBehaviour
         good.PlayCard(nodeToUpdate);
         bad.PlayCard(nodeToUpdate);
 
-       // Debug.Log("Clearing old hand...");
+        // Debug.Log("Clearing old hand...");
 
         // Clear drawn cards: set cards as children to decks
-        cardHolderLeft.good.transform.position = cardHolderLeft.good.ogPosition;
-        cardHolderLeft.good.transform.position = cardHolderLeft.good.ogPosition;
-        cardHolderLeft.bad.transform.position = cardHolderLeft.bad.ogPosition;
-        cardHolderRight.good.transform.position = cardHolderRight.good.ogPosition;
-        cardHolderRight.bad.transform.position = cardHolderRight.bad.ogPosition;
+        cardHolderLeft.good.transform.position = initialSlots[0].position;
+        cardHolderLeft.bad.transform.position = initialSlots[1].position;
+        cardHolderRight.good.transform.position = initialSlots[0].position;
+        cardHolderRight.bad.transform.position = initialSlots[1].position;
     }
 
     public void AddEnemy(GameObject enemy)
