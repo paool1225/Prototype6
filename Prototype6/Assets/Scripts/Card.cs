@@ -9,8 +9,11 @@ public class Card : MonoBehaviour
     private GameManager gameManager;
     private GameTimer gameTimer;
     public bool hasBeenUsed = false;
+
+    private AudioSource audioSource;
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<GameManager>();
         gameTimer = FindObjectOfType<GameTimer>();
     }
@@ -48,6 +51,8 @@ public class Card : MonoBehaviour
                 PlayCardAdd5Seconds();
                 break;
         }
+
+        audioSource.Play();
     }
 
     public void PlayCardPushBack(int nodeToUpdate)

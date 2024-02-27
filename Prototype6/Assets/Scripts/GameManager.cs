@@ -50,13 +50,13 @@ public class GameManager : MonoBehaviour
 
     public void Drawcard()
     {
-        if(goodDeckSize <= 4) // reset cards back into unused piles
+        if(goodDeckSize <= 5) // reset cards back into unused piles
         {
             for(int i = 0; i < deckGood.Count; i++) 
             {
                 deckGood[i].hasBeenUsed = false;
             }
-            goodDeckSize = 10;
+            goodDeckSize = 18;
         }
         if(badDeckSize <= 2)
         {
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
             {
                 deckBad[i].hasBeenUsed = false;
             }
-            badDeckSize = 6;
+            badDeckSize = 10;
         }
 
         int p1, p2;
@@ -72,9 +72,24 @@ public class GameManager : MonoBehaviour
         if(playerHealth.health < 4)
         {
             // let high cards come in
-        }
+            p1 = Random.Range(0, deckGood.Count); // pull random card
+            randGood1 = deckGood[p1];
 
-        if (numberOfActiveEnemies >= 3)
+            while (randGood1.hasBeenUsed)
+            {
+                p1 = Random.Range(0, deckGood.Count); // pull random card
+                randGood1 = deckGood[p1];
+            }
+
+            p2 = Random.Range(0, deckGood.Count); // pull random card
+            randGood2 = deckGood[p2];
+            while (p2 == p1 || randGood2.hasBeenUsed) // while it pulls a higher power level
+            {
+                p2 = Random.Range(0, deckGood.Count);
+                randGood2 = deckGood[p2];
+            }
+        }
+        else if (numberOfActiveEnemies >= 4)
         {
             Debug.Log("HIGH ENEMIES: " + numberOfActiveEnemies);
             p1 = Random.Range(0, deckGood.Count); // pull random card

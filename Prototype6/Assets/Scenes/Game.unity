@@ -849,6 +849,10 @@ PrefabInstance:
       propertyPath: cardPowerLevel
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5978712116886726543, guid: d9027421d6f7ca4419ad5d98d68abcab, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b729bc21cfaa6c84fad0eb7e1973f64d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -958,6 +962,10 @@ PrefabInstance:
       propertyPath: cardPowerLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5978712116886726543, guid: d9027421d6f7ca4419ad5d98d68abcab, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b90aa93d539f2b140a7a7b386632e023, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1584,11 +1592,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1171449552753278093, guid: 4762c25438abcda4e907f6f97148532c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1171449552753278093, guid: 4762c25438abcda4e907f6f97148532c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1171449552753278093, guid: 4762c25438abcda4e907f6f97148532c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1660,11 +1668,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7250446417889521169, guid: 4762c25438abcda4e907f6f97148532c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7250446417889521169, guid: 4762c25438abcda4e907f6f97148532c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7250446417889521169, guid: 4762c25438abcda4e907f6f97148532c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2017,6 +2025,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 485416218828563482, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b036870939afa6946941e7fe2a2fcca1, type: 3}
     - target: {fileID: 887444223948428588, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
       propertyPath: m_Name
       value: Good Deck Types
@@ -2065,10 +2077,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1677881698633535610, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b729bc21cfaa6c84fad0eb7e1973f64d, type: 3}
     - target: {fileID: 2191580877897863695, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
       propertyPath: cardPowerLevel
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2323982506660281585, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ab14c3f6ca4cbb4e9bb53866c899b1d, type: 3}
+    - target: {fileID: 2912609054334909046, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b90aa93d539f2b140a7a7b386632e023, type: 3}
     - target: {fileID: 3512014721315146851, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
       propertyPath: cardPowerLevel
       value: 1
@@ -2089,6 +2113,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -6.92
       objectReference: {fileID: 0}
+    - target: {fileID: 6558368875195761498, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d7a66001742afd345812df71b99e6daa, type: 3}
     - target: {fileID: 9186897658594566766, guid: 2fbcede81916d734ea7ef32e98a4bf24, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.55
@@ -2310,6 +2338,10 @@ PrefabInstance:
       propertyPath: cardPowerLevel
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5978712116886726543, guid: d9027421d6f7ca4419ad5d98d68abcab, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ab14c3f6ca4cbb4e9bb53866c899b1d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2504,6 +2536,10 @@ PrefabInstance:
       propertyPath: cardPowerLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5978712116886726543, guid: d9027421d6f7ca4419ad5d98d68abcab, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d7a66001742afd345812df71b99e6daa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3734,6 +3770,10 @@ PrefabInstance:
       propertyPath: cardPowerLevel
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5978712116886726543, guid: d9027421d6f7ca4419ad5d98d68abcab, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b036870939afa6946941e7fe2a2fcca1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
