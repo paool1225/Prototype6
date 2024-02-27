@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Card : MonoBehaviour
 {
     public int cardId;
+    public int cardPowerLevel;
     public Vector3 ogPosition;
     private GameManager gameManager;
     private GameTimer gameTimer;
@@ -115,6 +116,8 @@ public class Card : MonoBehaviour
             for (int i = 0; i < enemiesOnNode.Count; i++)
             {
                 DestroyImmediate(enemiesOnNode[i]); // Destroy enemies 
+                gameManager.numberOfActiveEnemies--;
+                Debug.Log(gameManager.numberOfActiveEnemies);
             }
         }
         enemiesOnNode.Clear();

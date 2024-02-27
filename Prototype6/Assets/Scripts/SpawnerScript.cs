@@ -36,5 +36,8 @@ public class SpawnerScript : MonoBehaviour
         EnemyMovement em = enemy.GetComponent<EnemyMovement>();
         em.enemySpawnerParent = spawnerNumber; // tell enemy which node it originated from
         gameManager.AddEnemy(enemy); // add to list of all active enemies in GameManager
+        gameManager.numberOfActiveEnemies++;
+        Debug.Log(gameManager.numberOfActiveEnemies);
+
     }
 }

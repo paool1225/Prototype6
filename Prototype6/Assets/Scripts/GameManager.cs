@@ -10,15 +10,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] CardHolder cardHolderRight;
     [SerializeField] GameObject GoodDeck;
     [SerializeField] GameObject BadDeck;
-    
+
     [SerializeField] public GameObject[] nodes;
-    public List<GameObject>[] enemies = new List<GameObject>[8]; 
+    public List<GameObject>[] enemies = new List<GameObject>[8];
+    public int numberOfActiveEnemies = 0;
+
+    private GameTimer timer;
 
     private void Start()
     {
-        for(int i = 0; i < enemies.Length; i++) // instantiate Lists with array
+        timer = FindObjectOfType<GameTimer>();
+
+        for (int i = 0; i < enemies.Length; i++) // instantiate Lists with array
         {
-            enemies[i] = new();
+            enemies[i] = new List<GameObject>();
         }
 
         Drawcard();
@@ -26,26 +31,63 @@ public class GameManager : MonoBehaviour
 
     public void Drawcard()
     {
-        int p1 = Random.Range(0, deckGood.Count);
-        // Pull random cards
-        Card randGood1 = deckGood[p1];
-
-        int p2 = Random.Range(0, deckGood.Count);
-        while (p2 == p1)
+        int p1, p2;
+        Card randGood1, randGood2, randBad1, randBad2;
+        // if timer is < x amt of time, then introduce higher power cards
+        if (timer.gameDuration >= 70f || numberOfActiveEnemies < 4)
         {
-            p2 = Random.Range(0, deckGood.Count);
+            p1 = Random.Range(0, deckGood.Count); // pull random card
+            while (deckGood[p1].cardPowerLevel > 2) // while it pulls a higher power level
+            {
+                p1 = Random.Range(0, deckGood.Count);
+
+            }
+            randGood1 = deckGood[p1];
+
+            p2 = Random.Range(0, deckGood.Count); // pull random card
+            while (deckGood[p2].cardPowerLevel > 2 || p2 == p1) // while it pulls a higher power level
+            {
+                p2 = Random.Range(0, deckGood.Count);
+
+            }
+            randGood2 = deckGood[p2];
         }
-        Card randGood2 = deckGood[p2];
+        else if (numberOfActiveEnemies > 3)
+        {
+            p1 = Random.Range(0, deckGood.Count); // pull random card
+            randGood1 = deckGood[p1];
 
-        p1 = Random.Range(0, deckBad.Count);
-        Card randBad1 = deckBad[p1];
+            p2 = Random.Range(0, deckGood.Count); // pull random card
+            while (p2 == p1) // while it pulls a higher power level
+            {
+                p2 = Random.Range(0, deckGood.Count);
 
-        p2 = Random.Range(0, deckBad.Count);
-        while (p2 == p1)
+            }
+            randGood2 = deckGood[p2];
+        }
+        else // less than 70 secs left
+        {
+            p1 = Random.Range(0, deckGood.Count); // pull random card
+            randGood1 = deckGood[p1];
+
+            p2 = Random.Range(0, deckGood.Count); // pull random card
+            while ( p2 == p1) // while it pulls a higher power level
+            {
+                p2 = Random.Range(0, deckGood.Count);
+
+            }
+            randGood2 = deckGood[p2];
+        }
+        p1 = Random.Range(0, deckBad.Count); // pull random card
+        randBad1 = deckBad[p1];
+
+        p2 = Random.Range(0, deckBad.Count); // pull random card
+        while (p2 == p1) // while it pulls a higher power level
         {
             p2 = Random.Range(0, deckBad.Count);
+
         }
-        Card randBad2 = deckBad[p2];
+        randBad2 = deckBad[p2];
 
         // Place cards in right position
         randGood1.transform.position = cardSlots[0].position;
