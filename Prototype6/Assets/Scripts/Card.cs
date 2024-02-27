@@ -81,7 +81,7 @@ public class Card : MonoBehaviour
         for (int i = enemiesOnNode.Count - 1; i >= 0; i--)
         {
             // Call the new DestroyEnemy method
-            Destroy(enemiesOnNode[i]); // destroy enemy
+            DestroyImmediate(enemiesOnNode[i]); // destroy enemy
             gameManager.numberOfActiveEnemies--;
         }
         enemiesOnNode.Clear(); // remove from enemy list on node
@@ -102,7 +102,7 @@ public class Card : MonoBehaviour
             for (int i = enemiesOnNode.Count - 1; i >= 0; i--)
             {
                 // Assuming Destroy(gameObject) is sufficient for cleanup, otherwise call a specific cleanup method
-                Destroy(enemiesOnNode[i].gameObject);
+                DestroyImmediate(enemiesOnNode[i].gameObject);
 
                 // Optionally remove the enemy from the list, if you handle this in the OnDestroy method of EnemyMovement, this is not needed
                 enemiesOnNode.RemoveAt(i);
