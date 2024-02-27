@@ -17,16 +17,4 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("MainMenu");
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
 }
