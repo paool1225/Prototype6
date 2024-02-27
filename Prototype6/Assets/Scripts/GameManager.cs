@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < enemies.Length; i++) // instantiate Lists with array
         {
-            enemies[i] = new List<EnemyMovement>();
+            enemies[i] = new List<GameObject>();
         }
 
         Drawcard();
