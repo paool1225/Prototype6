@@ -89,13 +89,13 @@ public class GameManager : MonoBehaviour
                 randGood2 = deckGood[p2];
             }
         }
-        else if (numberOfActiveEnemies >= 4)
+        else if (numberOfActiveEnemies >= 4) // be less likely to give out less powerful cards
         {
             Debug.Log("HIGH ENEMIES: " + numberOfActiveEnemies);
             p1 = Random.Range(0, deckGood.Count); // pull random card
             randGood1 = deckGood[p1];
 
-            while (randGood1.hasBeenUsed)
+            while (randGood1.cardPowerLevel < 2|| randGood1.hasBeenUsed)
             {
                 p1 = Random.Range(0, deckGood.Count); // pull random card
                 randGood1 = deckGood[p1];
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 
             p2 = Random.Range(0, deckGood.Count); // pull random card
             randGood2 = deckGood[p2];
-            while (p2 == p1 || randGood2.hasBeenUsed) // while it pulls a higher power level
+            while (p2 == p1 || randGood2.cardPowerLevel < 2 || randGood2.hasBeenUsed) // while it pulls a higher power level
             {
                 p2 = Random.Range(0, deckGood.Count);
                 randGood2 = deckGood[p2];
