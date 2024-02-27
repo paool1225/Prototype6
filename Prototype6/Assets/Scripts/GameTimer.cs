@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class GameTimer : MonoBehaviour
 {
-    public float gameDuration = 90f; // 1 minute and 30 seconds
+    public float gameDuration = 10f; // 1 minute
     public TextMeshProUGUI timerText; // Reference to your TMP text for the timer
 
     void Start()

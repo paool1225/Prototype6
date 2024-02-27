@@ -8,7 +8,7 @@ public class Card : MonoBehaviour
     public int cardPowerLevel;
     private GameManager gameManager;
     private GameTimer gameTimer;
-
+    public bool hasBeenUsed = false;
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -17,6 +17,10 @@ public class Card : MonoBehaviour
 
     public void PlayCard(int nodeToUpdate) // play the card
     {
+        hasBeenUsed = true; // effectively put into used pile
+        gameManager.goodDeckSize--;
+        gameManager.badDeckSize--;
+
         switch(cardId)
         {
             case 0: // good
