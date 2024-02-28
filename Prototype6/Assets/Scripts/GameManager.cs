@@ -179,8 +179,8 @@ public class GameManager : MonoBehaviour
         cardHolderLeft.good = randGood1; cardHolderLeft.bad = randBad1;
         cardHolderRight.good = randGood2; cardHolderRight.bad = randBad2;
 
-        Debug.Log("rg: " + randGood1.name + " rb: " + randBad1.name);
-        Debug.Log("lg: " + randGood2.name + " lb: " + randBad2.name);
+        //Debug.Log("rg: " + randGood1.name + " rb: " + randBad1.name);
+        //Debug.Log("lg: " + randGood2.name + " lb: " + randBad2.name);
     }
 
     public void PlayCards(Card good, Card bad, int nodeToUpdate)

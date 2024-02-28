@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed = 1.5f;
+    public float speed = 5f;
     private Transform playerTransform;
     private Vector2 startingPosition;
 

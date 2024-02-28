@@ -25,7 +25,7 @@ public class SpawnerScript : MonoBehaviour
         {
             SpawnEnemy();
             // After spawning, set the next spawn time to a new random value
-            nextSpawnTime = Time.time + Random.Range(5f, 20f);
+            nextSpawnTime = Time.time + Random.Range(10f, 30f);
         }
     }
 
